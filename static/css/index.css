@@ -1,115 +1,185 @@
+/* ============================================
+   Base
+   ============================================ */
 body {
-  font-family: 'Noto Sans', sans-serif;
-}
-
-
-.footer .icon-link {
-    font-size: 25px;
-    color: #000;
-}
-
-.link-block a {
-    margin-top: 5px;
-    margin-bottom: 5px;
-}
-
-.dnerf {
-  font-variant: small-caps;
-}
-
-
-.teaser .hero-body {
-  padding-top: 0;
-  padding-bottom: 3rem;
-}
-
-.teaser {
   font-family: 'Google Sans', sans-serif;
+  color: #2b2b2b;
+  font-size: 1.08rem;
+  line-height: 1.6;
 }
 
+/* Unified content text — every non-heading text element on the page */
+.content,
+.content p,
+section p,
+section li,
+.section p,
+.subtitle,
+.demo-caption,
+.results-carousel .item-caption,
+.footer p,
+.publication-authors,
+.navbar-link,
+.navbar-item,
+pre, code {
+  font-family: 'Google Sans', sans-serif;
+  font-size: 1.08rem;
+  font-weight: 400;
+  color: #2b2b2b;
+}
 
+/* ============================================
+   Headings (kept distinct from body text)
+   ============================================ */
 .publication-title {
+  font-family: 'Google Sans', sans-serif;
+  font-size: 2.25rem !important;
+  line-height: 1.2;
+  margin-bottom: 1.25rem !important;
 }
 
-.publication-banner {
-  max-height: parent;
-
+@media (min-width: 769px) {
+  .publication-title {
+    font-size: 2.6rem !important;
+  }
 }
 
-.publication-banner video {
-  position: relative;
-  left: auto;
-  top: auto;
-  transform: none;
-  object-fit: fit;
+.section .title.is-3 {
+  font-family: 'Google Sans', sans-serif;
+  margin-bottom: 1.25rem;
 }
 
-.publication-header .hero-body {
+.section .title.is-4 {
+  font-family: 'Google Sans', sans-serif;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
 }
 
-.publication-title {
-    font-family: 'Google Sans', sans-serif;
+/* ============================================
+   Top Navigation
+   ============================================ */
+.navbar {
+  border-bottom: 1px solid #eee;
+  background-color: #fff;
 }
 
-.publication-authors {
-    font-family: 'Google Sans', sans-serif;
+.navbar-item img {
+  max-height: 2.2rem;
 }
 
-.publication-venue {
-    color: #555;
-    width: fit-content;
-    font-weight: bold;
+.navbar-centered {
+  display: flex;
+  justify-content: center;
 }
 
-.publication-awards {
-    color: #ff3860;
-    width: fit-content;
-    font-weight: bolder;
+.navbar-inner {
+  display: flex;
+  align-items: center;
 }
 
-.publication-authors {
+@media (max-width: 1023px) {
+  .navbar-centered {
+    justify-content: flex-start;
+  }
+  .navbar-inner {
+    flex: 1;
+    justify-content: space-between;
+  }
 }
 
+/* ============================================
+   Section spacing
+   ============================================ */
+.section {
+  padding: 3rem 1.5rem;
+}
+
+@media (min-width: 769px) {
+  .section {
+    padding: 4rem 1.5rem;
+  }
+}
+
+/* ============================================
+   Hero / Publication
+   ============================================ */
 .publication-authors a {
-   color: hsl(204, 86%, 53%) !important;
+  color: hsl(204, 86%, 53%) !important;
 }
 
 .publication-authors a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 .author-block {
   display: inline-block;
 }
 
-.publication-banner img {
-}
-
-.publication-authors {
-  /*color: #4286f4;*/
-}
-
 .publication-video {
-    position: relative;
-    width: 100%;
-    height: 0;
-    padding-bottom: 56.25%;
-
-    overflow: hidden;
-    border-radius: 10px !important;
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%;
+  overflow: hidden;
+  border-radius: 10px !important;
 }
 
 .publication-video iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
-.publication-body img {
+.link-block a {
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
+/* ============================================
+   Teaser
+   ============================================ */
+.teaser .hero-body {
+  padding-top: 0;
+  padding-bottom: 3rem;
+}
+
+/* ============================================
+   Demo videos in Real-Kitchen Demonstrations
+   ============================================ */
+.demo-video {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 10px;
+  display: block;
+  background: #000;
+}
+
+/* Row 1 (Simple Grasping): kitchen1~3 are 1.13:1, plastic is 1.25:1.
+   Use 1.13:1 container and crop only from left (object-position: right). */
+.demo-video-square {
+  aspect-ratio: 1.13 / 1;
+  object-fit: cover;
+  object-position: right center;
+  background: transparent;
+  border-radius: 8px;
+}
+
+/* Override for plastic — equal crop on left and right */
+.demo-video-center {
+  object-position: center center;
+}
+
+/* Margin-top for captions under videos (font already unified globally) */
+.demo-caption {
+  margin-top: 0.6rem !important;
+}
+
+/* ============================================
+   Carousels (Additional Experiments, Failure Cases)
+   ============================================ */
 .results-carousel {
   overflow: hidden;
 }
@@ -125,33 +195,25 @@ body {
 
 .results-carousel video {
   margin: 0;
-}
-
-
-.interpolation-panel {
-  background: #f5f5f5;
-  border-radius: 10px;
-}
-
-.interpolation-panel .interpolation-image {
   width: 100%;
-  border-radius: 5px;
+  aspect-ratio: 6 / 5;
+  object-fit: cover;
+  display: block;
+  background: #000;
 }
 
-.interpolation-video-column {
+.results-carousel .item-caption {
+  margin: 0;
+  padding: 0.55rem 0.5rem 0.6rem;
+  text-align: center;
+  background: #fff;
+  border-top: 1px solid #eee;
 }
 
-.interpolation-panel .slider {
-  margin: 0 !important;
-}
-
-.interpolation-panel .slider {
-  margin: 0 !important;
-}
-
-#interpolation-image-wrapper {
-  width: 100%;
-}
-#interpolation-image-wrapper img {
-  border-radius: 5px;
+/* ============================================
+   Footer
+   ============================================ */
+.footer .icon-link {
+  font-size: 25px;
+  color: #000;
 }
