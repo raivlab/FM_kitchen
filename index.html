@@ -1,406 +1,265 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="description"
-        content="Kitchen Robotic Manipulation utilizing Foundation Models — a training-free, modular perception pipeline for dishware handling.">
-  <meta name="keywords" content="Kitchen Manipulation, Foundation Models, 6D Pose Estimation, Zero-Shot Perception, Robot Manipulation">
+  <meta name="description" content="Kitchen Robotic Manipulation utilizing Foundation Models — a training-free, modular perception pipeline for dishware handling.">
+  <meta name="keywords" content="Kitchen Manipulation, Foundation Models, 6D Pose Estimation, Zero-Shot Perception, Robot Manipulation, PAPRAS">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#08284a">
   <title>Kitchen Robotic Manipulation utilizing Foundation Models</title>
-
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
-        rel="stylesheet">
-
-  <link rel="stylesheet" href="./static/css/bulma.min.css">
-  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
-  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
-  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
-  <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-  <link rel="stylesheet" href="./static/css/index.css">
   <link rel="icon" href="./static/images/raiv.ico">
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script defer src="./static/js/fontawesome.all.min.js"></script>
-  <script src="./static/js/bulma-carousel.min.js"></script>
-  <script src="./static/js/bulma-slider.min.js"></script>
-  <script src="./static/js/index.js"></script>
+  <link rel="stylesheet" href="./static/css/index.css">
+  <script defer src="./static/js/index.js"></script>
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
 
-<!-- Top Navigation -->
-<nav class="navbar navbar-centered" role="navigation" aria-label="main navigation">
-  <div class="navbar-inner">
-    <div class="navbar-brand">
-      <a class="navbar-item" href="https://sites.google.com/view/raiv-lab/home?authuser=0" target="_blank" rel="noopener">
-        <img src="./static/images/raivlab_logo.png" alt="RAIV Lab" style="height: 2.2rem;">
-      </a>
-      <a role="button" class="navbar-burger" id="navbar-burger-button" aria-label="menu" aria-expanded="false" data-target="navbar-menu">
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-      </a>
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="collaboration-brand" aria-label="RAIV Lab and KIMLAB">
+        <a class="brand-link brand-link-raiv" href="https://raivlab.github.io/index.html" target="_blank" rel="noopener noreferrer" aria-label="Visit RAIV Lab">
+          <img src="./static/images/raivlab_logo.png" alt="RAIV Lab">
+        </a>
+        <span class="brand-times" aria-hidden="true">×</span>
+        <a class="brand-link brand-link-kimlab" href="https://publish.illinois.edu/kimlab2020/" target="_blank" rel="noopener noreferrer" aria-label="Visit KIMLAB">
+          <img src="./static/images/KIMLAB.jpg" alt="KIMLAB">
+        </a>
+      </div>
+
     </div>
-    <div id="navbar-menu" class="navbar-menu">
-      <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link">More Work from RAIV-LAB</a>
-        <div class="navbar-dropdown">
-          <a class="navbar-item" href="https://www.youtube.com/@raivlab" target="_blank" rel="noopener">
-            RAIV-LAB Youtube
+  </header>
+
+  <main id="main-content">
+    <section class="hero section-anchor" id="overview" aria-labelledby="page-title">
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="container hero-content">
+        <p class="eyebrow"><span></span>Intelligent Service Robotics (ISR) · 2026</p>
+        <h1 id="page-title">
+          <span class="title-line">Kitchen Robotic Manipulation</span>
+          <span class="title-line title-line-accent">utilizing Foundation Models</span>
+        </h1>
+
+        <div class="publication-authors" aria-label="Authors">
+          <span class="author-item"><a class="author-raiv" href="https://sites.google.com/view/raiv-lab/members?authuser=0" target="_blank" rel="noopener noreferrer">Myung-Hwan Jeon</a><sup class="affiliation-raiv">1</sup></span>
+          <span aria-hidden="true">·</span>
+          <span class="author-item"><a class="author-kimlab" href="https://sanky1234.github.io/" target="_blank" rel="noopener noreferrer">Sankalp Yamsani</a><sup class="affiliation-kimlab">2</sup></span>
+          <span aria-hidden="true">·</span>
+          <span class="author-item"><a class="author-kimlab" href="https://ece.illinois.edu/about/directory/faculty/joohyung" target="_blank" rel="noopener noreferrer">Joohyung Kim</a><sup class="affiliation-kimlab">2</sup></span>
+        </div>
+
+        <div class="publication-affiliations">
+          <span class="affiliation-raiv-name"><sup class="affiliation-raiv">1</sup><span class="affiliation-label">RAIVLAB</span>, Kumoh National Institute of Technology</span>
+          <span class="affiliation-kimlab-name"><sup class="affiliation-kimlab">2</sup><span class="affiliation-label">KIMLAB</span>, University of Illinois Urbana-Champaign</span>
+        </div>
+
+        <div class="publication-actions" aria-label="Publication links">
+          <span class="button button-disabled" aria-disabled="true">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M6 2h8l4 4v16H6V2Zm8 1.8V7h3.2L14 3.8ZM8 11v1.5h8V11H8Zm0 3.5V16h8v-1.5H8Zm0 3.5v1.5h5V18H8Z"/></svg>
+            Paper
+          </span>
+          <a class="button button-primary" href="https://youtu.be/tYHywdV1Nvs" target="_blank" rel="noopener noreferrer">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M21.6 7.2a2.9 2.9 0 0 0-2-2C17.8 4.7 12 4.7 12 4.7s-5.8 0-7.6.5a2.9 2.9 0 0 0-2 2A30 30 0 0 0 2 12a30 30 0 0 0 .4 4.8 2.9 2.9 0 0 0 2 2c1.8.5 7.6.5 7.6.5s5.8 0 7.6-.5a2.9 2.9 0 0 0 2-2A30 30 0 0 0 22 12a30 30 0 0 0-.4-4.8ZM10 15.2V8.8l5.5 3.2-5.5 3.2Z"/></svg>
+            Video
+          </a>
+          <a class="button button-secondary" href="https://github.com/raivlab/FM_kitchen" target="_blank" rel="noopener noreferrer">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.87c-2.78.6-3.37-1.18-3.37-1.18-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.35 1.09 2.92.83.09-.65.35-1.09.64-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02A9.6 9.6 0 0 1 12 6.82a9.6 9.6 0 0 1 2.5.34c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.86V21c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg>
+            Code
           </a>
         </div>
       </div>
-    </div>
-  </div>
-</nav>
+    </section>
 
-<!-- Hero -->
-<section class="hero">
-  <div class="hero-body">
-    <div class="container is-max-desktop">
-      <div class="columns is-centered">
-        <div class="column has-text-centered">
-          <h1 class="title is-2 publication-title">Kitchen Robotic Manipulation<br>utilizing Foundation Models</h1>
-          <div class="is-size-5 publication-authors">
-            <span class="author-block">
-              <a href="https://sites.google.com/view/raiv-lab/members?authuser=0">Myung-Hwan Jeon</a><sup>1</sup>,
-            </span>
-            <span class="author-block">
-              <a href="https://sanky1234.github.io/">Sankalp Yamsani</a><sup>2</sup>,
-            </span>
-            <span class="author-block">
-              <a href="https://ece.illinois.edu/about/directory/faculty/joohyung">Joohyung Kim</a><sup>2</sup>
-            </span>
-          </div>
+    <section class="teaser" aria-label="Cup stacking teaser">
+      <div class="container container-wide">
+        <div class="media-frame media-frame-hero">
+          <video autoplay muted loop playsinline preload="metadata" aria-label="PAPRAS robot stacking cups in a kitchen">
+            <source src="./static/videos/main/cup_stacking.mp4" type="video/mp4">
+          </video>
+          <div class="media-badge"><span></span>Real-world deployment</div>
+        </div>
+      </div>
+    </section>
 
-          <div class="is-size-5 publication-authors">
-            <span class="author-block"><sup>1</sup>Kumoh National Institute of Technology,&nbsp;</span>
-            <span class="author-block"><sup>2</sup>University of Illinois Urbana-Champaign</span>
-          </div>
+    <section class="section section-anchor" id="abstract" aria-labelledby="abstract-title">
+      <div class="container prose-container">
+        <div class="section-heading section-heading-centered">
+          <h2 id="abstract-title" class="section-title-compact">Abstract</h2>
+        </div>
+        <p>Deploying robots in everyday human environments requires perception systems that are both robust and adaptable to diverse, dynamic conditions. In this work, we present a modular perception pipeline for household manipulation tasks, with a focus on dishware handling in kitchen environments. The pipeline integrates open-vocabulary object detection, multi-view segmentation, instance-aware 3D reconstruction, and a 2D-3D feature fusion strategy for 6D pose estimation and grasp planning. Its modular design enables systematic substitution of multiple visual and geometric foundation models, allowing us to identify the best-performing configuration through extensive evaluation on a custom kitchen dataset. The best-performing configuration (LLMDet + SAMv2 + DINOv2 + GeoTransformer) achieves an ADI of 89.12% on the 20-scene kitchen benchmark with cluttered and occluded conditions. Furthermore, real-world demonstrations confirm that the best configuration can be deployed on physical robots without environment-specific retraining, successfully executing tasks such as sink-to-dishwasher transfer and cup stacking. It validates the adaptability and scalability of the pipeline and highlights its potential as a practical framework for household robotic systems.</p>
+      </div>
+    </section>
 
-          <div class="column has-text-centered">
-            <div class="publication-links">
-              <!-- Paper PDF -->
-              <span class="link-block">
-                <a href="#"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fas fa-file-pdf"></i>
-                  </span>
-                  <span>Paper</span>
-                </a>
-              </span>
-              <!-- Video -->
-              <span class="link-block">
-                <a href="https://youtu.be/tYHywdV1Nvs"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fab fa-youtube"></i>
-                  </span>
-                  <span>Video</span>
-                </a>
-              </span>
-              <!-- Code -->
-              <span class="link-block">
-                <a href="https://github.com/raivlab/FM_kitchen"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fab fa-github"></i>
-                  </span>
-                  <span>Code</span>
-                </a>
-              </span>
+    <section class="section section-tinted section-anchor" id="video" aria-labelledby="video-title">
+      <div class="container">
+        <div class="section-heading section-heading-centered">
+          <h2 id="video-title" class="section-title-compact">Video</h2>
+        </div>
+        <div class="embed-frame">
+          <iframe src="https://www.youtube.com/embed/tYHywdV1Nvs?si=-HMGNqCZQ0Vdentl&amp;rel=0" title="Training-Free Kitchen Robotic Manipulation utilizing Foundation Models" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-anchor" id="method" aria-labelledby="method-title">
+      <div class="container">
+        <div class="section-heading section-heading-centered method-heading">
+          <h3 id="method-title" class="section-title-compact">Modular and Zero-Shot Perception Pipeline</h3>          
+        </div>
+        <figure class="pipeline-figure">
+          <img src="./static/images/pipeline.jpg" alt="Modular perception pipeline from RGB-D scans through recognition, pose estimation, and grasp generation">
+          <figcaption>Given a manipulator equipped with an RGB-D camera that scans the workspace, the system sequentially captures RGB-D images and the corresponding joint angles. From these inputs, the pipeline recognizes target objects, estimates their 6D poses, and generates grasp candidates for manipulation. Every module is designed to be swappable, allowing systematic exploration of foundation-model combinations.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section section-tinted section-anchor" id="papras" aria-labelledby="papras-title">
+      <div class="container">
+        <div class="papras-card">
+          <div class="papras-media">
+            <div class="papras-video-grid" aria-label="PAPRAS robotic arm demonstrations">
+              <video autoplay muted loop playsinline preload="metadata" aria-label="PAPRAS demonstration 1">
+                <source src="./static/videos/papras/papras1.mp4" type="video/mp4">
+              </video>
+              <video autoplay muted loop playsinline preload="metadata" aria-label="PAPRAS demonstration 2">
+                <source src="./static/videos/papras/papras2.mp4" type="video/mp4">
+              </video>
+              <video autoplay muted loop playsinline preload="metadata" aria-label="PAPRAS demonstration 3">
+                <source src="./static/videos/papras/papras3.mp4" type="video/mp4">
+              </video>
+              <video autoplay muted loop playsinline preload="metadata" aria-label="PAPRAS demonstration 4">
+                <source src="./static/videos/papras/papras4.mp4" type="video/mp4">
+              </video>
+              <video autoplay muted loop playsinline preload="metadata" aria-label="PAPRAS demonstration 5">
+                <source src="./static/videos/papras/papras5.mp4" type="video/mp4">
+              </video>
             </div>
+            <span class="papras-mark">PAPRAS</span>
+          </div>
+          <div class="papras-copy">
+            <h2 id="papras-title">Powered by PAPRAS</h2>
+            <p class="papras-lead">All real-world demonstrations were conducted using PAPRAS.</p>
+            <p><strong>PAPRAS</strong> is a <strong>Plug-And-Play Robotic Arm System</strong> designed for rapid deployment across everyday environments. Its portable arms and modular mounting approach make it a natural platform for evaluating household manipulation across diverse kitchen environments.</p>
+            <a class="text-link" href="https://uiuckimlab.github.io/papras-pages/" target="_blank" rel="noopener noreferrer">Explore PAPRAS <span aria-hidden="true">↗</span></a>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- Teaser: Cup Stacking -->
-<section class="hero teaser">
-  <div class="container is-max-desktop">
-    <div class="hero-body">
-      <video id="teaser" autoplay muted loop playsinline style="width:100%; height:auto; border-radius: 10px;">
-        <source src="./static/videos/main/cup_stacking.mp4" type="video/mp4">
-      </video>
-    </div>
-  </div>
-</section>
+    <section class="section section-anchor" id="demonstrations" aria-labelledby="demonstrations-title">
+      <div class="container">
+        <div class="section-heading section-heading-centered demonstrations-heading">
+          <h3 id="demonstrations-title" class="section-title-compact">Real-Kitchen Demonstrations</h3>
+          <p>We deploy the best-performing configuration on physical robots across diverse kitchen environments, validating sink-to-dishwasher transfer, simple grasping, and cup stacking without any environment-specific retraining.</p>
+        </div>
 
-<!-- Abstract -->
-<section class="section">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-            Deploying robots in everyday human environments requires perception systems that are both robust and adaptable to diverse, dynamic conditions. In this work, we present a modular perception pipeline for household manipulation tasks, with a focus on dishware handling in kitchen environments. The pipeline integrates open-vocabulary object detection, multi-view segmentation, instance-aware 3D reconstruction, and a 2D-3D feature fusion strategy for 6D pose estimation and grasp planning. Its modular design enables systematic substitution of multiple visual and geometric foundation models, allowing us to identify the best-performing configuration through extensive evaluation on a custom kitchen dataset. The best-performing configuration (LLMDet + SAMv2 + DINOv2 + GeoTransformer) achieves an ADI of 89.12% on the 20-scene kitchen benchmark with cluttered and occluded conditions. Furthermore, real-world demonstrations confirm that the best configuration can be deployed on physical robots without environment-specific retraining, successfully executing tasks such as sink-to-dishwasher transfer and cup stacking. It validates the adaptability and scalability of the pipeline and highlights its potential as a practical framework for household robotic systems.
+        <div class="demo-grid demo-grid-compact">
+          <figure class="media-card"><video autoplay muted loop playsinline preload="metadata"><source src="./static/videos/main/kitchen1.mp4" type="video/mp4"></video><figcaption>Kitchen 1</figcaption></figure>
+          <figure class="media-card"><video autoplay muted loop playsinline preload="metadata"><source src="./static/videos/main/kitchen3.mp4" type="video/mp4"></video><figcaption>Kitchen 1</figcaption></figure>
+          <figure class="media-card"><video autoplay muted loop playsinline preload="metadata"><source src="./static/videos/main/plastic.mp4" type="video/mp4"></video><figcaption>Kitchen 1<br>(Embodiment Change)</figcaption></figure>
+          <figure class="media-card"><video autoplay muted loop playsinline preload="metadata"><source src="./static/videos/main/kitchen2.mp4" type="video/mp4"></video><figcaption>Kitchen 2</figcaption></figure>
+        </div>
+
+        <div class="demo-grid demo-grid-featured">
+          <figure class="media-card"><video autoplay muted loop playsinline preload="metadata"><source src="./static/videos/main/dishwasher.mp4" type="video/mp4"></video><figcaption>Sink-to-Dishwasher</figcaption></figure>
+          <figure class="media-card"><video autoplay muted loop playsinline preload="metadata"><source src="./static/videos/sub/Cup Stacking 36.mp4" type="video/mp4"></video><figcaption>Cup Stacking</figcaption></figure>
+        </div>
+
+        <div class="additional-experiments carousel-slider" data-carousel-slider="experiments" aria-labelledby="additional-experiments-title">
+          <div class="media-carousel" data-carousel="experiments" tabindex="0" aria-label="Additional experiment videos">
+            <div class="carousel-track">
+              <figure class="media-card"><video muted loop playsinline preload="metadata"><source src="./static/videos/sub/Mars 3 Long.mp4" type="video/mp4"></video></figure>
+              <figure class="media-card"><video muted loop playsinline preload="metadata"><source src="./static/videos/sub/Ori 4.mp4" type="video/mp4"></video></figure>
+              <figure class="media-card"><video muted loop playsinline preload="metadata"><source src="./static/videos/sub/Mars 1.mp4" type="video/mp4"></video></figure>
+              <figure class="media-card"><video muted loop playsinline preload="metadata"><source src="./static/videos/sub/Ori 2.mp4" type="video/mp4"></video></figure>
+              <figure class="media-card"><video muted loop playsinline preload="metadata"><source src="./static/videos/sub/Mars 5.mp4" type="video/mp4"></video></figure>
+              <figure class="media-card"><video muted loop playsinline preload="metadata"><source src="./static/videos/sub/Ori 6.mp4" type="video/mp4"></video></figure>
+              <figure class="media-card"><video muted loop playsinline preload="metadata"><source src="./static/videos/sub/Mars 2.mp4" type="video/mp4"></video></figure>
+              <figure class="media-card"><video muted loop playsinline preload="metadata"><source src="./static/videos/sub/Ori 1.mp4" type="video/mp4"></video></figure>
+              <figure class="media-card"><video muted loop playsinline preload="metadata"><source src="./static/videos/sub/Mars 4.mp4" type="video/mp4"></video></figure>
+              <figure class="media-card"><video muted loop playsinline preload="metadata"><source src="./static/videos/sub/Ori 5.mp4" type="video/mp4"></video></figure>
+              <figure class="media-card"><video muted loop playsinline preload="metadata"><source src="./static/videos/sub/Ori 3.mp4" type="video/mp4"></video></figure>
+            </div>
+            <button class="carousel-navigation carousel-navigation-previous" type="button" aria-label="Previous additional experiments" data-carousel-prev="experiments">
+              <svg viewBox="0 0 50 80" aria-hidden="true" focusable="false"><polyline fill="currentColor" stroke-width=".5em" stroke-linecap="round" stroke-linejoin="round" points="45.63,75.8 0.375,38.087 45.63,0.375"></polyline></svg>
+            </button>
+            <button class="carousel-navigation carousel-navigation-next" type="button" aria-label="Next additional experiments" data-carousel-next="experiments">
+              <svg viewBox="0 0 50 80" aria-hidden="true" focusable="false"><polyline fill="currentColor" stroke-width=".5em" stroke-linecap="round" stroke-linejoin="round" points="0.375,0.375 45.63,38.087 0.375,75.8"></polyline></svg>
+            </button>
+            <div class="carousel-pagination" aria-label="Additional experiment slides"></div>
+          </div>
+          <p id="additional-experiments-title" class="additional-experiments-label">Additional Experiments</p>
+          <p class="media-motion-note">*Motions are not real-time</p>
         </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- Video (YouTube) -->
-<section class="section">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Video</h2>
-        <div class="publication-video">
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/tYHywdV1Nvs?si=-HMGNqCZQ0Vdentl&amp;controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <section class="section section-dark section-anchor" id="failures" aria-labelledby="failures-title">
+      <div class="container">
+        
+
+        <div class="carousel-heading failure-heading">
+          <div class="failure-heading-copy">
+            <h3 id="failures-title" class="section-title-compact">Failure Cases</h3>
+            <p>Representative failure modes observed in real-world deployment</p>
+          </div>
+        </div>
+        <div class="failure-slider carousel-slider" data-carousel-slider="failures" aria-label="Failure case videos">
+          <div class="media-carousel media-carousel-dark" data-carousel="failures" tabindex="0" aria-label="Failure case videos">
+            <div class="carousel-track">
+              <figure class="media-card"><video muted loop playsinline preload="metadata"><source src="./static/videos/fail/Slip1.mp4" type="video/mp4"></video><figcaption>Gripper Slip</figcaption></figure>
+              <figure class="media-card"><video muted loop playsinline preload="metadata"><source src="./static/videos/fail/misdetection1.mp4" type="video/mp4"></video><figcaption>Misdetection</figcaption></figure>
+              <figure class="media-card"><video muted loop playsinline preload="metadata"><source src="./static/videos/fail/Slip2.mp4" type="video/mp4"></video><figcaption>Gripper Slip</figcaption></figure>
+              <figure class="media-card"><video muted loop playsinline preload="metadata"><source src="./static/videos/fail/cluttered1.mp4" type="video/mp4"></video><figcaption>Contact-Induced Displacement</figcaption></figure>
+              <figure class="media-card"><video muted loop playsinline preload="metadata"><source src="./static/videos/fail/Slip3.mp4" type="video/mp4"></video><figcaption>Gripper Slip</figcaption></figure>
+              <figure class="media-card"><video muted loop playsinline preload="metadata"><source src="./static/videos/fail/misdetecion2.mp4" type="video/mp4"></video><figcaption>Misdetection</figcaption></figure>
+              <figure class="media-card"><video muted loop playsinline preload="metadata"><source src="./static/videos/fail/Slip4.mp4" type="video/mp4"></video><figcaption>Gripper Slip</figcaption></figure>
+              <figure class="media-card"><video muted loop playsinline preload="metadata"><source src="./static/videos/fail/cluttered2.mp4" type="video/mp4"></video><figcaption>Contact-Induced Displacement</figcaption></figure>
+            </div>
+            <button class="carousel-navigation carousel-navigation-previous" type="button" aria-label="Previous failure cases" data-carousel-prev="failures">
+              <svg viewBox="0 0 50 80" aria-hidden="true" focusable="false"><polyline fill="currentColor" stroke-width=".5em" stroke-linecap="round" stroke-linejoin="round" points="45.63,75.8 0.375,38.087 45.63,0.375"></polyline></svg>
+            </button>
+            <button class="carousel-navigation carousel-navigation-next" type="button" aria-label="Next failure cases" data-carousel-next="failures">
+              <svg viewBox="0 0 50 80" aria-hidden="true" focusable="false"><polyline fill="currentColor" stroke-width=".5em" stroke-linecap="round" stroke-linejoin="round" points="0.375,0.375 45.63,38.087 0.375,75.8"></polyline></svg>
+            </button>
+            <div class="carousel-pagination" aria-label="Failure case slides"></div>
+          </div>
+          <p class="media-motion-note">*Motions are not real-time</p>
         </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- Method: Pipeline -->
-<section class="section">
-  <div class="container is-max-desktop">
-    <div class="column is-full-width">
-      <h2 class="title is-3 has-text-centered">Modular and Zero-Shot Perception Pipeline</h2>
-
-      <div class="content has-text-justified">
-        <div class="has-text-centered" style="margin-bottom: 1.5rem;">
-          <img src="./static/images/pipeline.png" style="width: 100%; height: auto;">
+    <section class="section section-tinted section-anchor" id="citation" aria-labelledby="citation-title">
+      <div class="container">
+        <div class="section-heading citation-heading">
+          <h2 id="citation-title" class="section-title-compact">BibTeX</h2>
+          <button class="citation-copy-button" type="button" data-copy-citation aria-label="Copy BibTeX">Copy</button>
         </div>
-
-        <p>
-          Given a manipulator equipped with an RGB-D camera that scans the workspace, the system sequentially captures RGB-D images and the corresponding joint angles. From these inputs, the pipeline recognizes target objects, estimates their 6D poses, and generates grasp candidates for manipulation. Every module is designed to be swappable, allowing systematic exploration of foundation-model combinations.
-        </p>
-
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Real-Kitchen Demonstrations -->
-<section class="section">
-  <div class="container is-max-desktop">
-    <div class="column is-full-width">
-      <h2 class="title is-3 has-text-centered">Real-Kitchen Demonstrations</h2>
-      <p class="demo-caption has-text-centered" style="margin-bottom: 2rem;">
-        We deploy the best-performing configuration on physical robots across diverse kitchen environments,
-        validating sink-to-dishwasher transfer, simple grasping, and cup stacking without any environment-specific retraining.
-      </p>
-
-      <!-- Row 1: Simple Grasping (4 videos) -->
-      <div class="columns is-centered is-mobile is-multiline demo-row demo-row-quad" style="margin-bottom: 2rem;">
-        <div class="column is-one-quarter-tablet is-half-mobile has-text-centered">
-          <video src="./static/videos/main/kitchen1.mp4"
-                 autoplay loop muted playsinline
-                 class="demo-video demo-video-square">
-          </video>
-          <p class="demo-caption">Kitchen 1</p>
-        </div>
-        <div class="column is-one-quarter-tablet is-half-mobile has-text-centered">
-          <video src="./static/videos/main/kitchen3.mp4"
-                 autoplay loop muted playsinline
-                 class="demo-video demo-video-square">
-          </video>
-          <p class="demo-caption">Kitchen 1</p>
-        </div>
-        <div class="column is-one-quarter-tablet is-half-mobile has-text-centered">
-          <video src="./static/videos/main/plastic.mp4"
-                 autoplay loop muted playsinline
-                 class="demo-video demo-video-square demo-video-center">
-          </video>
-          <p class="demo-caption">Kitchen 1<br>(Embodiment Change)</p>
-        </div>
-        <div class="column is-one-quarter-tablet is-half-mobile has-text-centered">
-          <video src="./static/videos/main/kitchen2.mp4"
-                 autoplay loop muted playsinline
-                 class="demo-video demo-video-square">
-          </video>
-          <p class="demo-caption">Kitchen 2</p>
-        </div>
-      </div>
-
-      <!-- Row 2: Sink-to-Dishwasher (left) + Cup Stacking (right) -->
-      <div class="columns is-centered demo-row">
-        <div class="column is-half has-text-centered">
-          <video src="./static/videos/main/dishwasher.mp4"
-                 autoplay loop muted playsinline
-                 class="demo-video">
-          </video>
-          <p class="demo-caption">Sink-to-Dishwasher</p>
-        </div>
-        <div class="column is-half has-text-centered">
-          <video src="./static/videos/sub/Cup Stacking 36.mp4"
-                 autoplay loop muted playsinline
-                 class="demo-video">
-          </video>
-          <p class="demo-caption">Cup Stacking</p>
-        </div>
-      </div>
-
-      <!-- Additional Experiments sub-block -->
-      <div style="margin-top: 3rem;"></div>
-      <div id="results-carousel" class="carousel results-carousel">
-        <div class="item">
-          <video autoplay muted loop playsinline>
-            <source src="./static/videos/sub/Mars 3 Long.mp4" type="video/mp4">
-          </video>
-        </div>
-        <div class="item">
-          <video autoplay muted loop playsinline>
-            <source src="./static/videos/sub/Ori 4.mp4" type="video/mp4">
-          </video>
-        </div>
-        <div class="item">
-          <video autoplay muted loop playsinline>
-            <source src="./static/videos/sub/Mars 1.mp4" type="video/mp4">
-          </video>
-        </div>
-        <div class="item">
-          <video autoplay muted loop playsinline>
-            <source src="./static/videos/sub/Ori 2.mp4" type="video/mp4">
-          </video>
-        </div>
-        <div class="item">
-          <video autoplay muted loop playsinline>
-            <source src="./static/videos/sub/Mars 5.mp4" type="video/mp4">
-          </video>
-        </div>
-        <div class="item">
-          <video autoplay muted loop playsinline>
-            <source src="./static/videos/sub/Ori 6.mp4" type="video/mp4">
-          </video>
-        </div>
-        <div class="item">
-          <video autoplay muted loop playsinline>
-            <source src="./static/videos/sub/Mars 2.mp4" type="video/mp4">
-          </video>
-        </div>
-        <div class="item">
-          <video autoplay muted loop playsinline>
-            <source src="./static/videos/sub/Ori 1.mp4" type="video/mp4">
-          </video>
-        </div>
-        <div class="item">
-          <video autoplay muted loop playsinline>
-            <source src="./static/videos/sub/Mars 4.mp4" type="video/mp4">
-          </video>
-        </div>
-        <div class="item">
-          <video autoplay muted loop playsinline>
-            <source src="./static/videos/sub/Ori 5.mp4" type="video/mp4">
-          </video>
-        </div>
-        <div class="item">
-          <video autoplay muted loop playsinline>
-            <source src="./static/videos/sub/Ori 3.mp4" type="video/mp4">
-          </video>
-        </div>
-      </div>
-      <p class="demo-caption has-text-centered">Additional Experiments</p>
-    </div>
-  </div>
-</section>
-
-<!-- Failure Cases -->
-<section class="section">
-  <div class="container is-max-desktop">
-    <h2 class="title is-3 has-text-centered" style="margin-bottom: 0.75rem;">Failure Cases</h2>
-    <p class="has-text-centered" style="margin-bottom: 1.5rem;">
-      Representative failure modes observed in real-world deployment
-    </p>
-      <div id="failure-carousel" class="carousel results-carousel">
-        <div class="item">
-          <video autoplay muted loop playsinline>
-            <source src="./static/videos/fail/Slip1.mp4" type="video/mp4">
-          </video>
-          <p class="item-caption">Gripper Slip</p>
-        </div>
-        <div class="item">
-          <video autoplay muted loop playsinline>
-            <source src="./static/videos/fail/misdetection1.mp4" type="video/mp4">
-          </video>
-          <p class="item-caption">Misdetection</p>
-        </div>
-        <div class="item">
-          <video autoplay muted loop playsinline>
-            <source src="./static/videos/fail/Slip2.mp4" type="video/mp4">
-          </video>
-          <p class="item-caption">Gripper Slip</p>
-        </div>
-        <div class="item">
-          <video autoplay muted loop playsinline>
-            <source src="./static/videos/fail/cluttered1.mp4" type="video/mp4">
-          </video>
-          <p class="item-caption">Contact-Induced Displacement</p>
-        </div>
-        <div class="item">
-          <video autoplay muted loop playsinline>
-            <source src="./static/videos/fail/Slip3.mp4" type="video/mp4">
-          </video>
-          <p class="item-caption">Gripper Slip</p>
-        </div>
-        <div class="item">
-          <video autoplay muted loop playsinline>
-            <source src="./static/videos/fail/misdetecion2.mp4" type="video/mp4">
-          </video>
-          <p class="item-caption">Misdetection</p>
-        </div>
-        <div class="item">
-          <video autoplay muted loop playsinline>
-            <source src="./static/videos/fail/Slip4.mp4" type="video/mp4">
-          </video>
-          <p class="item-caption">Gripper Slip</p>
-        </div>
-        <div class="item">
-          <video autoplay muted loop playsinline>
-            <source src="./static/videos/fail/cluttered2.mp4" type="video/mp4">
-          </video>
-          <p class="item-caption">Contact-Induced Displacement</p>
-        </div>
-      </div>
-    </div>
-</section>
-
-<!-- BibTeX -->
-<section class="section" id="BibTeX">
-  <div class="container is-max-desktop content">
-    <h2 class="title">BibTeX</h2>
-    <pre><code>@article{jeon2026kitchen,
+        <div class="code-block">
+          <pre><code>@article{jeon2026kitchen,
   title   = {Kitchen Robotic Manipulation utilizing Foundation Models},
   author  = {Jeon, Myung-Hwan and Yamsani, Sankalp and Kim, Joohyung},
-  journal = {TBD},
-  year    = {2026}
+  journal = {Intelligent Service Robotics},
+  year    = {2026},
+  url     = {https://raivlab.github.io/FM_kitchen},
+  note    = {Accepted. To appear.}
 }</code></pre>
-  </div>
-</section>
-
-<!-- Footer -->
-<footer class="footer">
-  <div class="container">
-    <div class="columns is-centered">
-      <div class="column is-8">
-        <div class="content has-text-centered">
-          <p>
-            This website template is borrowed from <a rel="Nerfies" href="https://nerfies.github.io/">Nerfies</a>.
-            Thanks to the authors for making their design publicly available.
-          </p>
         </div>
       </div>
-    </div>
-  </div>
-</footer>
+    </section>
+  </main>
 
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const burger = document.getElementById('navbar-burger-button');
-    const menu = document.getElementById('navbar-menu');
-    if (burger && menu) {
-      burger.addEventListener('click', () => {
-        burger.classList.toggle('is-active');
-        menu.classList.toggle('is-active');
-      });
-    }
-  });
-</script>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <a class="footer-link footer-link-raiv" href="https://raivlab.github.io/index.html" target="_blank" rel="noopener noreferrer" aria-label="Visit RAIV Lab">
+      <img class="footer-logo-raiv" src="./static/images/logo_full.png" alt="RAIV Lab">
+      </a>
+      <a class="footer-link footer-link-kimlab" href="https://publish.illinois.edu/kimlab2020/" target="_blank" rel="noopener noreferrer" aria-label="Visit KIMLAB">
+        <span class="footer-kimlab-brand">
+          <img class="footer-logo-kimlab" src="./static/images/KIMLAB.jpg" alt="KIMLAB">
+          <span class="footer-kimlab-subtitle">Kinetic Intelligent Machine LAB</span>
+        </span>
+      </a>
+    </div>
+  </footer>
 </body>
 </html>
