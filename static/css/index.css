@@ -282,6 +282,7 @@ h3 {
 .affiliation-label {
   color: inherit;
   font-weight: 750;
+  text-decoration: none;
 }
 
 .publication-affiliations {
