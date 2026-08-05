@@ -1,16 +1,16 @@
 :root {
-  --navy: #08284a;
-  --navy-deep: #061b36;
-  --raiv-blue: #0a2a4a;
-  --raiv-green: #2ba8a1;
-  --teal: #147c78;
-  --mint: #2faaa3;
-  --kimlab-orange: #f16824;
-  --slate: #42576a;
+  --navy: #0A2A4A;
+  --navy-deep: #0A2A4A;
+  --raiv-blue: #0A2A4A;
+  --raiv-green: #2BA8A1;
+  --teal: #2BA8A1;
+  --mint: #2BA8A1;
+  --kimlab-orange: #FF5F05;
+  --slate: #0A2A4A;
   --mist: #eef4f6;
   --line: #d9e4e8;
   --white: #ffffff;
-  --page: #fbfdfe;
+  --page: #ffffff;
   --shadow-sm: 0 10px 30px rgba(8, 40, 74, 0.08);
   --shadow-lg: 0 24px 70px rgba(8, 40, 74, 0.15);
   --radius-sm: 10px;
@@ -283,6 +283,16 @@ h3 {
   color: inherit;
   font-weight: 750;
   text-decoration: none;
+}
+
+.affiliation-link-raiv {
+  text-decoration-line: underline;
+  text-decoration-color: var(--raiv-green);
+}
+
+.affiliation-link-kimlab {
+  text-decoration-line: underline;
+  text-decoration-color: var(--kimlab-orange);
 }
 
 .publication-affiliations {
